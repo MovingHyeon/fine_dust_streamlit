@@ -282,7 +282,7 @@ with metricbox:
             )
         )
 
-        fig1.update_layout(width = 200, height=150, margin_b = 0, margin_t = 45, margin_r = 20)
+        fig1.update_layout(width = 200, height=150, margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 20)
 
         st.plotly_chart(
             fig1,
@@ -306,7 +306,7 @@ with metricbox:
             )
         )
 
-        fig2.update_layout(width = 200, height=150,  margin_b = 0, margin_t = 45, margin_r = 20)
+        fig2.update_layout(width = 200, height=150,  margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 20)
 
         st.plotly_chart(
             fig2,
