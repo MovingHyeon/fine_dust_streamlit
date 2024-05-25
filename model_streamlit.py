@@ -24,7 +24,6 @@ import pickle
 import streamlit as st
 import shap
 import datetime
-import ipython
 
 import json
 import folium
@@ -378,7 +377,7 @@ st.header("자치구별 초미세먼지 요인 작용 양상")
 
 ### SHAP
 
-shap.initjs()
+# shap.initjs()
 
 explainer = shap.Explainer(xgb)
 PCs_new = pd.concat([df.loc[:, ["year", "month", "district"]], PCs], axis = 1)
