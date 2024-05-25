@@ -282,7 +282,7 @@ with metricbox:
             )
         )
 
-        fig1.update_layout(width = 250, height=200, margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 20)
+        fig1.update_layout(width = 250, height=200, margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 25)
 
         st.plotly_chart(
             fig1,
@@ -306,7 +306,7 @@ with metricbox:
             )
         )
 
-        fig2.update_layout(width = 250, height=200,  margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 20)
+        fig2.update_layout(width = 250, height=200,  margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 25)
 
         st.plotly_chart(
             fig2,
@@ -332,7 +332,7 @@ with metricbox:
             )
         )
 
-        fig3.update_layout(width = 250, height=200, margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 20)
+        fig3.update_layout(width = 250, height=200, margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 25)
 
         st.plotly_chart(
             fig3,
@@ -356,7 +356,7 @@ with metricbox:
             )
         )
 
-        fig4.update_layout(width = 250, height=200, margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 20)
+        fig4.update_layout(width = 250, height=200, margin_b = 0, margin_t = 45, margin_r = 20, margin_l = 25)
 
         st.plotly_chart(
             fig4,
