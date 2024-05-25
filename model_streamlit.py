@@ -410,7 +410,7 @@ district3 = district_shap.selectbox(
 if district3:
     current_district.update({"district": district3})
 
-st.markdown("**주요지표안내** PC1: E 지표 / PC6: G 지표 / PC5: O 지표 / PC3: T 지표")
+st.markdown("**주요지표안내** PC1: E 지표 / PC6: G 지표 / PC5: O 지표 / PC3: T 지표 / 그 외 지표는 부가설명 지표")
 
 st_shap(shap.plots.force(shap_values_district[0]))
 
