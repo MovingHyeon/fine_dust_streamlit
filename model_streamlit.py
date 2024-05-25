@@ -24,6 +24,7 @@ import pickle
 import streamlit as st
 import shap
 import datetime
+import ipython
 
 import json
 import folium
