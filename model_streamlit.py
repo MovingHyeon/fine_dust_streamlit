@@ -157,13 +157,17 @@ with mapbox:
     feature = feature_widget.selectbox(
         label = "지표",
         key = "map_feature",
-        options = ("초미세먼지(μg/m3)", "월 강수량 합(mm)", "평균 풍속(m/s)", "PC1", "PC2", "PC3", "PC4", "PC5", "PC6"),
+        options = ("초미세먼지(μg/m3)", "월 강수량 합(mm)", "평균 풍속(m/s)", "E 지표", "G 지표", "O 지표", "T 지표"),
         index = 0
     )
 
     if feature == "초미세먼지(μg/m3)": feature = "PM25"
     elif feature == "월 강수량 합(mm)": feature = "월강수량합(mm)"
     elif feature == "평균 풍속(m/s)": feature = "평균풍속(m/s)"
+    elif feature == "E 지표": feature == "PC1"
+    elif feature == "G 지표": feature == "PC6"
+    elif feature == "O 지표": feature == "PC5"
+    elif feature == "T 지표": feature == "PC3"
 
     map_df = final_df.loc[final_df["year"] == year, :].loc[final_df["month"]  == month, :]
     
@@ -271,14 +275,15 @@ with metricbox:
         fig1 = go.Figure(
                 go.Indicator(
                 mode = "gauge+number",
-                value = round(metric_df.loc[:, "PC6"].values[0], 2),
+                value = round(metric_df.loc[:, "PC1"].values[0], 2),
                 domain = {'x': [0, 1], 'y': [0, 1]},
-                title = {'text': "PC6"},
+                title = {'text': "E 지표"},
                 gauge = {
+                    'bar' : {'color': "blue"},
                     'axis': {'range': [-10, 10]},
                     'steps' : [
-                        {'range': [1.1, 3.3], 'color': "lightgray"},
-                        {'range': [3.3, 10], 'color': "gray"}
+                        {'range': [2.4, 7.2], 'color': "lightgray"},
+                        {'range': [7.2, 10], 'color': "gray"}
                     ]
                 },
             )
@@ -294,15 +299,15 @@ with metricbox:
         fig2 = go.Figure(
                 go.Indicator(
                 mode = "gauge+number",
-                value = round(metric_df.loc[:, "PC5"].values[0], 2),
+                value = round(metric_df.loc[:, "PC6"].values[0], 2),
                 domain = {'x': [0, 1], 'y': [0, 1]},
-                title = {'text': "PC5"},
+                title = {'text': "G 지표"},
                 gauge = {
-                    'bar' : {'color': "blue"},
+                    'bar' : {'color': "green"},
                     'axis': {'range': [-10, 10]},
                     'steps': [
-                        {'range': [1.2, 3.6], 'color': 'lightgray'},
-                        {'range': [3.6, 10], 'color': 'gray'}
+                        {'range': [1.1, 3.3], 'color': 'lightgray'},
+                        {'range': [3.3, 10], 'color': 'gray'}
                     ]
                 }
             )
@@ -320,15 +325,15 @@ with metricbox:
         fig3 = go.Figure(
                 go.Indicator(
                 mode = "gauge+number",
-                value = round(metric_df.loc[:, "PC3"].values[0], 2),
+                value = round(metric_df.loc[:, "PC5"].values[0], 2),
                 domain = {'x': [0, 1], 'y': [0, 1]},
-                title = {'text': "PC3"},
+                title = {'text': "O 지표"},
                 gauge = {
                     'axis': {'range': [-10, 10]},
-                    'bar' : {'color': "violet"},
+                    'bar' : {'color': "orange"},
                     'steps': [
-                        {'range': [-4.5, -1.5], 'color': 'lightgray'},
-                        {'range': [-10, -4.5], 'color': 'gray'}
+                        {'range': [1.5, 4.5], 'color': 'lightgray'},
+                        {'range': [4.5, 10], 'color': 'gray'}
                     ]
                 }
             )
@@ -344,16 +349,16 @@ with metricbox:
         fig4 = go.Figure(
                 go.Indicator(
                 mode = "gauge+number",
-                value = round(metric_df.loc[:, "PC1"].values[0], 2),
+                value = round(metric_df.loc[:, "PC3"].values[0], 2),
                 domain = {'x': [0, 1], 'y': [0, 1]},
-                title = {'text': "PC1"},
+                title = {'text': "T 지표"},
                 gauge = {
                     'axis': {'range': [-10, 10]},
                     'steps': [
-                        {'range': [2.4, 7.2], 'color': 'lightgray'},
-                        {'range': [7.2, 10], 'color': 'gray'}
+                        {'range': [-4.5, -1.5], 'color': 'lightgray'},
+                        {'range': [-10, -4.5], 'color': 'gray'}
                     ],
-                    'bar' : {'color': "orange"},
+                    'bar' : {'color': "violet"},
                 }
             )
         )
@@ -365,13 +370,15 @@ with metricbox:
             theme = "streamlit"
         )
 
-    st.markdown("**:green[PC6]**: 가스 사용량과 음식물 폐기물 재활용률 관련 대표 지표, 생할폐기물, 지정폐기물 배출량도 일정 수준 고려")
+    st.markdown("**:blue[E 지표: ENERGY & CARBON]**: 전기, 수도 사용량, 탄소 배출량, 음식물폐기물 배출량 관련 지표, 석유사용량도 일정 수준 고려")
+    
+    st.markdown("**:green[G 지표: GAS & WASTE]**: 가스 사용량과 음식물 폐기물 재활용률 관련 대표 지표, 생할폐기물, 지정폐기물 배출량도 일정 수준 고려")
 
-    st.markdown("**:blue[PC5]**: 석유 사용량과 관련 교통에 관한 지표, 버스와 자차 이용할 수록 수치 증가, 전기차와 따릉이 이용할 수록 수치 감소")
+    st.markdown("**:orange[O 지표: OIL TRANSPORTS]**: 석유 사용량과 관련 교통에 관한 지표, 버스와 자차 이용할 수록 수치 증가, 전기차와 따릉이 이용할 수록 수치 감소")
 
-    st.markdown("**:violet[PC3]**: 대중교통 이용률, 생활폐기물 및 지정폐기물 배출량 관련 지표, 이 지수는 더 낮을 수록 안 좋음")
+    st.markdown("**:violet[T 지표: TRNASPORTS & WASYE]**: 대중교통 이용률, 생활폐기물 및 지정폐기물 배출량 관련 지표, 이 지수는 더 낮을 수록 안 좋음")
 
-    st.markdown("**:orange[PC1]**: 전기, 수도 사용량, 탄소 배출량, 음식물폐기물 배출량 관련 지표, 석유사용량도 일정 수준 고려")
+    
 
 st.markdown("---")
 
