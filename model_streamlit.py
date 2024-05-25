@@ -108,8 +108,7 @@ st.set_page_config(
     layout = "wide"
 )
 
-st.title("서울시 초미세먼지 Dashboard")
-
+st.title("서울시 초미세먼지 Dashboard: EGOT 지표")
 
 #
 
@@ -228,10 +227,8 @@ with mapbox:
         x = "district",
         y = feature,
         use_container_width = True
-    ).update_layout(
-        yaxis_title = feature00
     )
-
+    st.markdown("**주요지표안내** PC1: E 지표 / PC6: G 지표 / PC5: O 지표 / PC3: T 지표")
 ##
 
 with metricbox:
