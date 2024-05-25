@@ -75,6 +75,8 @@ PCs_weights = pd.DataFrame(data = pca.components_, columns = X.columns[MASK], in
 PCs = pd.DataFrame(data = PCs, columns = ["평균풍속(m/s)", "월강수량합(mm)"] + ['PC%d'%i for i in range(1, OPT_PC + 1)])
 
 final_df = pd.concat([df.loc[:, ["year", "month", "district"]], y, PCs], axis = 1)
+final_df = final_df.drop(["평균풍속(m/s)", "월강수량합(mm)"], axis = 1)
+final_df = pd.concat([final_df, df.loc[:, ["평균풍속(m/s)", "월강수량합(mm)"]]], axis = 1)
 
 y_pred = xgb.predict(PCs)
 mse = np.mean((y_pred - y.to_numpy().reshape(-1))**2)
