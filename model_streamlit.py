@@ -214,7 +214,7 @@ with mapbox:
     #     st.markdown(css, unsafe_allow_html=True)
     #     st_folium(map, use_container_width = True, height = 600)
 
-    st.components.v1.html(map._repr_html_(), width=520, height=320)
+    st.components.v1.html(map._repr_html_(), width=600, height=400)
 
 
     st.bar_chart(
