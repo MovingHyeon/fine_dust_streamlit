@@ -1,11 +1,11 @@
-matplotlib
-scikit-learn
-statsmodels
-pickle
-streamlit
-shap
-folium
-json
-streamlit_folium
-plotly
-streamlit_shap
+matplotlib == 3.8.0
+scikit-learn == 1.3.0
+statsmodels == 0.14.0
+pickle == 4.0
+streamlit == 1.32.0
+shap == 0.45.1
+folium == 0.14.0
+json == 2.0.9
+streamlit_folium == 0.20.0
+plotly == 5.22.0
+streamlit_shap == 1.0.2
