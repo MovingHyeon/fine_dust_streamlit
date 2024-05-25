@@ -42,7 +42,7 @@ seoul_district = ["강남구", "강동구", "강서구", "강북구", "관악구
 
 ### Data
 
-df = pd.read_csv("../datasets_new/final_dataset_v4.csv")
+df = pd.read_csv("final_dataset_v4.csv")
 
 df_model = df.drop(["year", "month", "district", "resid"], axis = 1)
 X = df_model.drop(["PM25"], axis = 1)
