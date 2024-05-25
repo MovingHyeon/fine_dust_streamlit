@@ -325,8 +325,8 @@ with metricbox:
                     'axis': {'range': [-10, 10]},
                     'bar' : {'color': "violet"},
                     'steps': [
-                        {'range': [1.5, 4.5], 'color': 'lightgray'},
-                        {'range': [4.5, 10], 'color': 'gray'}
+                        {'range': [-4.5, -1.5], 'color': 'lightgray'},
+                        {'range': [-10, -4.5], 'color': 'gray'}
                     ]
                 }
             )
@@ -342,7 +342,7 @@ with metricbox:
         fig4 = go.Figure(
                 go.Indicator(
                 mode = "gauge+number",
-                value = -round(metric_df.loc[:, "PC1"].values[0], 2),
+                value = round(metric_df.loc[:, "PC1"].values[0], 2),
                 domain = {'x': [0, 1], 'y': [0, 1]},
                 title = {'text': "PC1"},
                 gauge = {
