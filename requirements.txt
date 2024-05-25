@@ -7,3 +7,4 @@ folium == 0.14.0
 streamlit_folium == 0.20.0
 plotly == 5.22.0
 streamlit_shap == 1.0.2
+xgboost == 2.0.3
