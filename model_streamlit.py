@@ -164,10 +164,10 @@ with mapbox:
     if feature == "초미세먼지(μg/m3)": feature = "PM25"
     elif feature == "월 강수량 합(mm)": feature = "월강수량합(mm)"
     elif feature == "평균 풍속(m/s)": feature = "평균풍속(m/s)"
-    elif feature == "E 지표": feature == "PC1"
-    elif feature == "G 지표": feature == "PC6"
-    elif feature == "O 지표": feature == "PC5"
-    elif feature == "T 지표": feature == "PC3"
+    elif feature == "E 지표": feature = "PC1"
+    elif feature == "G 지표": feature = "PC6"
+    elif feature == "O 지표": feature = "PC5"
+    elif feature == "T 지표": feature = "PC3"
 
     map_df = final_df.loc[final_df["year"] == year, :].loc[final_df["month"]  == month, :]
     
