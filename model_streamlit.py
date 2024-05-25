@@ -154,20 +154,20 @@ with mapbox:
 
 
 
-    feature = feature_widget.selectbox(
+    feature00 = feature_widget.selectbox(
         label = "지표",
         key = "map_feature",
         options = ("초미세먼지(μg/m3)", "월 강수량 합(mm)", "평균 풍속(m/s)", "E 지표", "G 지표", "O 지표", "T 지표"),
         index = 0
     )
 
-    if feature == "초미세먼지(μg/m3)": feature = "PM25"
-    elif feature == "월 강수량 합(mm)": feature = "월강수량합(mm)"
-    elif feature == "평균 풍속(m/s)": feature = "평균풍속(m/s)"
-    elif feature == "E 지표": feature = "PC1"
-    elif feature == "G 지표": feature = "PC6"
-    elif feature == "O 지표": feature = "PC5"
-    elif feature == "T 지표": feature = "PC3"
+    if feature00 == "초미세먼지(μg/m3)": feature = "PM25"
+    elif feature00 == "월 강수량 합(mm)": feature = "월강수량합(mm)"
+    elif feature00 == "평균 풍속(m/s)": feature = "평균풍속(m/s)"
+    elif feature00 == "E 지표": feature = "PC1"
+    elif feature00 == "G 지표": feature = "PC6"
+    elif feature00 == "O 지표": feature = "PC5"
+    elif feature00 == "T 지표": feature = "PC3"
 
     map_df = final_df.loc[final_df["year"] == year, :].loc[final_df["month"]  == month, :]
     
@@ -228,6 +228,8 @@ with mapbox:
         x = "district",
         y = feature,
         use_container_width = True
+    ).update_layout(
+        yaxis_title = feature00
     )
 
 ##
@@ -376,7 +378,7 @@ with metricbox:
 
     st.markdown("**:orange[O 지표: OIL TRANSPORTS]**: 석유 사용량과 관련 교통에 관한 지표, 버스와 자차 이용할 수록 수치 증가, 전기차와 따릉이 이용할 수록 수치 감소")
 
-    st.markdown("**:violet[T 지표: TRNASPORTS & WASYE]**: 대중교통 이용률, 생활폐기물 및 지정폐기물 배출량 관련 지표, 이 지수는 더 낮을 수록 안 좋음")
+    st.markdown("**:violet[T 지표: TRNASPORTS & WASTE]**: 대중교통 이용률, 생활폐기물 및 지정폐기물 배출량 관련 지표, 이 지수는 더 낮을 수록 안 좋음")
 
     
 
@@ -410,7 +412,8 @@ district3 = district_shap.selectbox(
 
 if district3:
     current_district.update({"district": district3})
-       
+
+st.markdown("**주요지표안내** PC1: E 지표 / PC6: G 지표 / PC5: O 지표 / PC3: T 지표")
 
 st_shap(shap.plots.force(shap_values_district[0]))
 
